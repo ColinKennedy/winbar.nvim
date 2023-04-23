@@ -26,6 +26,16 @@ local winbar_file = function()
     local file_path = vim.fn.expand('%:~:.:h')
     local filename = vim.fn.expand('%:t')
     local file_type = vim.fn.expand('%:e')
+
+    -- Added to deal with non-file buffers
+    --
+    -- Reference: https://github.com/fgheng/winbar.nvim/issues/24
+    --
+    if file_type == ""
+    then
+        file_type = vim.api.nvim_buf_get_option(0, "filetype")
+    end
+
     local value = ''
     local file_icon = ''
 
