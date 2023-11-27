@@ -122,12 +122,12 @@ M.init = function()
     end
 end
 
-M.show_winbar = function()
+M.show_winbar = function(value)
     if excludes() then
         return
     end
 
-    local value = winbar_file()
+    local value = value or winbar_file()
 
     if opts.show_symbols then
         if not f.isempty(value) then
